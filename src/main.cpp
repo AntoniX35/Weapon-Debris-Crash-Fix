@@ -5,7 +5,7 @@ void MessageHandler(F4SE::MessagingInterface::Message* a_message)
 		break;
 	case F4SE::MessagingInterface::kGameDataReady:
 		{
-			auto& trampoline = F4SE::GetTrampoline();
+			auto&                           trampoline = F4SE::GetTrampoline();
 			REL::Relocation<std::uintptr_t> target1{ REL::ID(2195766), 0x4F };
 			REL::Relocation<std::uintptr_t> target2{ REL::ID(2195766), 0x6DD };
 
@@ -59,9 +59,9 @@ extern "C" DLLEXPORT bool F4SEAPI F4SEPlugin_Load(const F4SE::LoadInterface* a_f
 	F4SE::Init(a_f4se, false);
 
 	InitializeLog();
-	
+
 	F4SE::AllocTrampoline(1 << 7);
-	
+
 	const auto messaging = F4SE::GetMessagingInterface();
 	messaging->RegisterListener(MessageHandler);
 
